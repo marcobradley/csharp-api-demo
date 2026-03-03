@@ -1,0 +1,39 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio folder
+.vs/
+
+# VS Code (keep workspace settings in source control)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ASP.NET Core local settings
+appsettings.Local.json
+
+# Logs
+*.log
+logs/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# NuGet packages (when packages folder is used)
+packages/
+*.nupkg
+
+# Dotnet tools and test results
+TestResults/
+.artifacts/
