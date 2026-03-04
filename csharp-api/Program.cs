@@ -33,6 +33,61 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
+app.MapGet("/besttimetobyorsellstock", (int[] prices) =>
+{
+    if (prices == null || prices.Length < 2)
+    {
+        return Results.BadRequest("Please provide at least two stock prices.");
+    }
+
+    int maxProfit = 0;
+    int minPrice = int.MaxValue;
+    minPrice = minPrice > prices[0] ? prices[0] : minPrice;
+
+    for (int i = 1; i < prices.Length; i++)
+    {
+        minPrice = minPrice > prices[i] ? prices[i] : minPrice;
+        maxProfit = prices[i] - minPrice > maxProfit ? prices[i] - minPrice : maxProfit;
+    }
+
+    return Results.Ok(maxProfit);
+}).WithName("GetBestTimeToBuyOrSellStock");
+
+app.MapGet("/longestpalidromicsubstring", (string s) =>
+{
+    if (string.IsNullOrEmpty(s))
+    {
+        return Results.BadRequest("Please provide a non-empty string.");
+    }
+
+    string sReturn = "";
+    string temp = "";
+    for(int i = 0; i < s.Length; i++){
+
+        temp = ExpandCenter(i, i, s);
+
+        if(sReturn.Length < temp.Length)
+            sReturn = temp;
+
+        temp = ExpandCenter(i, i + 1, s);
+
+        if(sReturn.Length < temp.Length)
+            sReturn = temp;
+    }
+
+    return Results.Ok(sReturn);
+}).WithName("GetLongestPalindromicSubstring");
+
+static string ExpandCenter(int left, int right, string s)
+{
+    while (left >= 0 && right < s.Length && s[left] == s[right])
+    {
+        left--;
+        right++;
+    }
+    return s.Substring(left + 1, right - left - 1);
+}
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
