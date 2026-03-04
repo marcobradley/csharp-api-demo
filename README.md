@@ -1,4 +1,4 @@
-# c-sharp-api-demo
+# csharp-api-demo
 
 ## NuGet source configuration
 
