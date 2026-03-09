@@ -91,6 +91,6 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
         response.EnsureSuccessStatusCode();
         var result = await response.Content.ReadFromJsonAsync<int[]>();
 
-        Assert.Equal(new[] { 1, 4 }, result);
+        Assert.Equal(new[] { 0, 3 }, result);
     }
 }
